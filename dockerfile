@@ -1,5 +1,5 @@
-FROM eclipse-temurin:17-jdk
-WORKDIR /app
-COPY . .
-RUN ./mvnw clean package
-CMD ["java", "-jar", "target/*.jar"]
+FROM amazoncorretto:17-alpine-jdk
+
+COPY target/backend-0.0.1-SNAPSHOT.jar app.jar
+
+ENTRYPOINT [ "java", "-jar", "/app.jar" ]
